@@ -20,6 +20,17 @@ func TestMain(m *testing.M) {
 	fmt.Println("Jalankan code setelah tes selesai dilakukan")
 }
 
+func TestSubTest(t *testing.T) {
+	t.Run("Bayu", func(t *testing.T) {
+		result := HelloWorld("Bayu")
+		assert.Equal(t, result, "Hallo Bayu", "Seharusnya Hallo Bayu")
+	})
+	t.Run("Firman", func(t *testing.T) {
+		result := HelloWorld("Firman")
+		assert.Equal(t, result, "Hallo Firman", "Seharusnya Hallo Firman")
+	})
+}
+
 func TestSkip(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		t.Skip("tidak bisa di jalankan di OS Windows")
